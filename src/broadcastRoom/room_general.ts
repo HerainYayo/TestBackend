@@ -96,10 +96,7 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
 
       console.log('/broadcasts access token', moduleManagerInstance.authManager.getAccessToken())
 
-      res.json({
-        'id': broadCastId,
-        'token': moduleManagerInstance.authManager.getAccessToken()
-      });
+      res.json(response.data);
     } catch (err: any) {
       res.status(err.response?.status || 500).json({ message: err.message });
     }
