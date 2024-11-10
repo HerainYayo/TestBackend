@@ -81,22 +81,21 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
 
       console.log(response.data)
 
-      // let responseData = {};
-      // if (response.data.items.length > 0) {
-      //   const broadcast = response.data.items[0];
-      //   const dbInfo =
-      //     await moduleManagerInstance.broadcastManager.initBroadcast(
-      //       broadcast
-      //     );
-      //   responseData = {
-      //     ...broadcast,
-      //     dbInfo: dbInfo,
-      //   };
-      // }
+      let responseData = {};
+      if (response.data.items.length > 0) {
+        const broadcast = response.data.items[0];
+        const dbInfo = null;
+        // const dbInfo =
+        //   await moduleManagerInstance.broadcastManager.initBroadcast(
+        //     broadcast
+        //   );
+        responseData = {
+          ...broadcast,
+          dbInfo: dbInfo,
+        };
+      }
 
-      console.log('/broadcasts access token', moduleManagerInstance.authManager.getAccessToken())
-
-      res.json(response.data);
+      res.json(responseData);
     } catch (err: any) {
       res.status(err.response?.status || 500).json({ message: err.message });
     }
