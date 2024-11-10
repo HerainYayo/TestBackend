@@ -33,27 +33,6 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
     }
   });
 
-  // app.post("/listLiveChatMessages", async (req: Request, res: Response) => {
-  //   try {
-  //     const nextPageToken = req.session?.nextPageToken || null;
-  //     const response = await axiosInstance.get("/liveChat/messages", {
-  //       params: {
-  //         part: "snippet, authorDetails",
-  //         liveChatId: req.body.liveChatId,
-  //         pageToken: nextPageToken,
-  //       },
-  //       headers: {
-  //         Authorization:
-  //           "Bearer " + moduleManagerInstance.authManager.getAccessToken(),
-  //       },
-  //     });
-  //     req.session.nextPageToken = response.data.nextPageToken;
-  //     res.json(response.data);
-  //   } catch (err) {
-  //     res.status(err.response?.status || 500).json({ message: err.message });
-  //   }
-  // });
-
   app.post("/insertLiveChatMessage", async (req: Request, res: Response) => {
     try {
 
@@ -85,9 +64,9 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
     }
   });
 
-  app.get("/broadcasts/:id", async (req: Request, res: Response) => {
+  app.post("/broadcasts", async (req: Request, res: Response) => {
     try {
-      const broadCastId = req.params.id;
+      const broadCastId = req.body.id;
       const response = await axiosInstance.get("/liveBroadcasts", {
         params: {
           part: "snippet",
@@ -112,7 +91,6 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
         };
       }
 
-      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.json(responseData);
     } catch (err: any) {
       res.status(err.response?.status || 500).json({ message: err.message });
