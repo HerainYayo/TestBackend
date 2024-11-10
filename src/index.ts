@@ -1,8 +1,33 @@
 // src/index.ts
-import express from 'express';
+import express from "express";
+import {googleapis} from "googleapis"
+
+
+import helmet from "helmet";
+import cors from "cors";
+import axios from "axios";
+import session from 'express-session';
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app: express.Application = express();
 const port = 3000;
+
+app.use(express.json());
+
+app.use(helmet());
+app.use(cors({
+  origin: process.env.ORIGIN,
+  credentials: true
+}));
+
+app.use(session({
+    secret: 'mySecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }));
 
 app.use(express.text());
 
