@@ -85,9 +85,9 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
     }
   });
 
-  app.get("/broadcasts", async (req: Request, res: Response) => {
+  app.get("/broadcasts/:id", async (req: Request, res: Response) => {
     try {
-      const broadCastId = req.query.broadCastId as string;
+      const broadCastId = req.params.id;
       const response = await axiosInstance.get("/liveBroadcasts", {
         params: {
           part: "snippet",
