@@ -68,16 +68,18 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
   app.post("/broadcasts", async (req: Request, res: Response) => {
     try {
       const broadCastId = req.body.id;
-      // const response = await axiosInstance.get("/liveBroadcasts", {
-      //   params: {
-      //     part: "snippet",
-      //     id: broadCastId,
-      //   },
-      //   headers: {
-      //     Authorization:
-      //       "Bearer " + moduleManagerInstance.authManager.getAccessToken(),
-      //   },
-      // });
+      const response = await axiosInstance.get("/liveBroadcasts", {
+        params: {
+          part: "snippet",
+          id: broadCastId,
+        },
+        headers: {
+          Authorization:
+            "Bearer " + moduleManagerInstance.authManager.getAccessToken(),
+        },
+      });
+
+      console.log(response.data)
 
       // let responseData = {};
       // if (response.data.items.length > 0) {
