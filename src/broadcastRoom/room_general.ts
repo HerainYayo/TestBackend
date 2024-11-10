@@ -84,11 +84,10 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
       let responseData = {};
       if (response.data.items.length > 0) {
         const broadcast = response.data.items[0];
-        const dbInfo = null;
-        // const dbInfo =
-        //   await moduleManagerInstance.broadcastManager.initBroadcast(
-        //     broadcast
-        //   );
+        const dbInfo =
+          await moduleManagerInstance.broadcastManager.initBroadcast(
+            broadcast
+          );
         responseData = {
           ...broadcast,
           dbInfo: dbInfo,

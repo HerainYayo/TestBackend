@@ -15,6 +15,7 @@ class BroadcastManager {
 
   async initBroadcast(room: Room): Promise<RoomResponse> {
     this.current_room = room;
+    console.log('start init')
     const broadcast = await runMongoFunction(
       this.db_string,
       this.collection_string,
@@ -22,6 +23,8 @@ class BroadcastManager {
         return await collection.findOne({ id: room.id });
       }
     );
+
+    console.log('search result', broadcast)
 
     if (broadcast != null) {
       this.current_room = {
