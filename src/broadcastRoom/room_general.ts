@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 
 function register(app: Application, moduleManagerInstance: ModuleManager) {
   // get all live broadcasts
-  app.get("/listLiveBroadcasts", async (req: Request, res: Response) => {
+  app.get("/api/listLiveBroadcasts", async (req: Request, res: Response) => {
     try {
       const response = await axiosInstance.get("/liveBroadcasts", {
         params: {
