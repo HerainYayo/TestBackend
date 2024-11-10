@@ -1,7 +1,5 @@
 // src/index.ts
 import express from "express";
-import {googleapis} from "googleapis"
-
 
 import helmet from "helmet";
 import cors from "cors";
