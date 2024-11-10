@@ -67,31 +67,33 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
   app.post("/broadcasts", async (req: Request, res: Response) => {
     try {
       const broadCastId = req.body.id;
-      const response = await axiosInstance.get("/liveBroadcasts", {
-        params: {
-          part: "snippet",
-          id: broadCastId,
-        },
-        headers: {
-          Authorization:
-            "Bearer " + moduleManagerInstance.authManager.getAccessToken(),
-        },
+      // const response = await axiosInstance.get("/liveBroadcasts", {
+      //   params: {
+      //     part: "snippet",
+      //     id: broadCastId,
+      //   },
+      //   headers: {
+      //     Authorization:
+      //       "Bearer " + moduleManagerInstance.authManager.getAccessToken(),
+      //   },
+      // });
+
+      // let responseData = {};
+      // if (response.data.items.length > 0) {
+      //   const broadcast = response.data.items[0];
+      //   const dbInfo =
+      //     await moduleManagerInstance.broadcastManager.initBroadcast(
+      //       broadcast
+      //     );
+      //   responseData = {
+      //     ...broadcast,
+      //     dbInfo: dbInfo,
+      //   };
+      // }
+
+      res.json({
+        'id': broadCastId
       });
-
-      let responseData = {};
-      if (response.data.items.length > 0) {
-        const broadcast = response.data.items[0];
-        const dbInfo =
-          await moduleManagerInstance.broadcastManager.initBroadcast(
-            broadcast
-          );
-        responseData = {
-          ...broadcast,
-          dbInfo: dbInfo,
-        };
-      }
-
-      res.json(responseData);
     } catch (err: any) {
       res.status(err.response?.status || 500).json({ message: err.message });
     }
