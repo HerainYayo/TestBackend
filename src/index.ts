@@ -5,7 +5,11 @@ import cors from "cors";
 import axios from "axios";
 import session from 'express-session';
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({
+  path: __dirname + '/.env.local'
+});
+
+console.log(__dirname)
 
 import {moduleManagerInstance} from "./core/moduleManager";
 
