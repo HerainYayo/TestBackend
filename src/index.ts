@@ -37,6 +37,7 @@ app.listen(port, () => {
 });
 
 register_auth(app, moduleManagerInstance);
+register_broadcast(app, moduleManagerInstance);
 
 // Homepage
 app.get('/', (req: express.Request, res: express.Response) => {
