@@ -15,6 +15,7 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
   // get all live broadcasts
   app.get("/api/listLiveBroadcasts", async (req: Request, res: Response) => {
     try {
+      console.log('/listLiveBroadcasts access token', moduleManagerInstance.authManager.getAccessToken())
       const response = await axiosInstance.get("/liveBroadcasts", {
         params: {
           part: "snippet",
@@ -90,6 +91,8 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
       //     dbInfo: dbInfo,
       //   };
       // }
+
+      console.log('/broadcasts access token', moduleManagerInstance.authManager.getAccessToken())
 
       res.json({
         'id': broadCastId,
