@@ -36,6 +36,8 @@ app.listen(port, () => {
   console.log(`server is listening on ${port}`);
 });
 
+register_auth(app, moduleManagerInstance);
+
 // Homepage
 app.get('/', (req: express.Request, res: express.Response) => {
   res.status(200).send("Hello World!");
