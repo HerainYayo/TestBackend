@@ -111,6 +111,8 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
           dbInfo: dbInfo,
         };
       }
+
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.json(responseData);
     } catch (err: any) {
       res.status(err.response?.status || 500).json({ message: err.message });
