@@ -11,4 +11,4 @@ cp -r public ./.amplify-hosting/static
 
 cp deploy-manifest.json ./.amplify-hosting/deploy-manifest.json
 
-cp .env ./.amplify-hosting/.env
+cp .env ./.amplify-hosting/compute/default/.env
