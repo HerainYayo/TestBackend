@@ -17,7 +17,9 @@ async function runMongoFunction(
 ): Promise<any> {
     let results;
     try {
+        console.log("start connect to db")
         await client.connect();
+        console.log("connect finish")
         const dbCollectionString = `${dbString}+${collectionString}`;
         let collection: Collection;
 
