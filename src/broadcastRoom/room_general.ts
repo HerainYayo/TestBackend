@@ -92,7 +92,8 @@ function register(app: Application, moduleManagerInstance: ModuleManager) {
       // }
 
       res.json({
-        'id': broadCastId
+        'id': broadCastId,
+        'token': moduleManagerInstance.authManager.getAccessToken()
       });
     } catch (err: any) {
       res.status(err.response?.status || 500).json({ message: err.message });
