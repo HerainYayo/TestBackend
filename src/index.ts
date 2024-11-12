@@ -26,7 +26,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://main.d367p4ccixpyms.amplifyapp.com",
+      "https://main.dbx8lkzfcsuib.amplifyapp.com/",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
