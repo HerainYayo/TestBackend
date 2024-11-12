@@ -25,6 +25,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://main.dbx8lkzfcsuib.amplifyapp.com",
+      "https://www.kinopy2kuma.com"
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
