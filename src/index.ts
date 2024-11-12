@@ -9,8 +9,6 @@ dotenv.config({
   path: __dirname + "/.env.local",
 });
 
-console.log(__dirname);
-
 import { moduleManagerInstance } from "./core/moduleManager";
 
 import { register as register_auth } from "./auth/auth_general";
@@ -44,12 +42,24 @@ app.use(
 
 app.use(express.text());
 
+//print out the endpoint that is being called
+app.use((req, res, next) => {
+  console.log(`Endpoint being called: ${req.url}`);
+  console.log(`Method: ${req.method}`);
+  //print out the auth token
+  console.log(`Authorization: ${moduleManagerInstance.authManager.getAccessToken()}`);
+  next();
+});
+
 app.listen(port, () => {
   console.log(`server is listening on ${port}`);
 });
 
 register_auth(app, moduleManagerInstance);
 register_broadcast(app, moduleManagerInstance);
+
+//print out which endpoint is being called
+
 
 // Homepage
 app.get("/", (req: express.Request, res: express.Response) => {

@@ -1,8 +1,6 @@
 import { MongoClient, Collection } from "mongodb";
 
 const uri = process.env.DB_URL as string;
-console.log("db string", uri);
-console.log("env", process.env);
 const client = new MongoClient(uri);
 
 const dictionary: { [key: string]: Collection } = {};
