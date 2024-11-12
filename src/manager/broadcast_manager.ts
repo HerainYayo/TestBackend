@@ -127,6 +127,7 @@ class BroadcastManager {
 
   getCurrentBroadcastChatId(): string {
     if (!this.current_room || !this.current_room.snippet) {
+      console.log('current room: ', this.current_room)
       // throw error, status 404, room not found
       throw new HttpError(404, "Room not found");
 
